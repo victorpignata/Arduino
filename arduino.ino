@@ -13,7 +13,7 @@ int estadoButton = 0;
    
 void setup()  
 {  
-  //Define os pinos como saida
+  
   Serial.begin(9600);
   pinMode(POT, INPUT);
   pinMode(BOTON, INPUT_PULLUP);
@@ -26,7 +26,7 @@ void setup()
    
 void loop()  
 {  
-  //Lê o valor de potenciometro
+  
   valorPot = analogRead (POT);
   
   //Converte o valor do potenciometro
