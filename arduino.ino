@@ -1,11 +1,11 @@
 
 # define POT A0
-#define BOTON 8
-#define Potencia 3
-#define Entrada1 2
+#define BUTTON 8
 #define Entrada2 7
 #define LED_HORARIO 12
+#define Entrada1 2
 #define LED_ANTI_HORARIO 13
+#define Potencia 3
 
 int valorPot = 0;
 int velocidade = 0;
@@ -16,7 +16,7 @@ void setup()
   
   Serial.begin(9600);
   pinMode(POT, INPUT);
-  pinMode(BOTON, INPUT_PULLUP);
+  pinMode(BUTTON, INPUT_PULLUP);
   pinMode(LED_HORARIO, OUTPUT); 
   pinMode(LED_ANTI_HORARIO, OUTPUT); 
   pinMode(Potencia, OUTPUT); 
@@ -29,16 +29,12 @@ void loop()
   
   valorPot = analogRead (POT);
   
-  //Converte o valor do potenciometro
   velocidade = map(valorPot ,0 ,1023, 0, 255);
 
-  //Lê o valor de buttonPin e armazena em estadoButton
-   estadoButton = digitalRead (BOTON);
+   estadoButton = digitalRead (BUTTON);
   
-  //Define a velocidade de rotacao  
   analogWrite(Potencia, velocidade);   
-  
-  //Aciona o motor no sentido horário 
+   
   if (estadoButton == HIGH){
        analogWrite(LED_HORARIO, 250);
       analogWrite(LED_ANTI_HORARIO, 0);
@@ -46,8 +42,7 @@ void loop()
     digitalWrite(Entrada2, HIGH);  
   
   }
- 
-  //Aciona o motor no sentido anti horário   
+    
   else{
       analogWrite(LED_ANTI_HORARIO, 250);
       analogWrite(LED_HORARIO, 0);
